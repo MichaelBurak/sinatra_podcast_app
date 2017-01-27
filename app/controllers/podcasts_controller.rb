@@ -15,4 +15,10 @@ end
   end
 end
 
+  post '/podcasts' do
+    @podcast = current_user.podcasts.create(name: params[:name], watched: params[:watched])
+    redirect '/podcasts'
+  end
+
+
 end
