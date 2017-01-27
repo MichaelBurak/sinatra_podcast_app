@@ -5,6 +5,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-use PodcastsController
-use UsersController
+#use PodcastsController
+#use UsersController
 run ApplicationController
