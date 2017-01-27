@@ -6,5 +6,5 @@ end
 
 use Rack::MethodOverride
 #use PodcastsController
-#use UsersController
+use UsersController
 run ApplicationController
