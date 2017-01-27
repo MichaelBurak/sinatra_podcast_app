@@ -1,5 +1,10 @@
+Podcasts:
+
 <%@podcasts.each do |podcast|%>
-  <%=podcast.name%>
+  <h2><%=podcast.name%></h2>
+  <br><h4><%= if podcast.watched == true then "Watched [X]"
+  end %></h4><br>
 <%end %>
 
+<br>
 <a href="/podcasts/new">Want to add a new podcast?</a>
