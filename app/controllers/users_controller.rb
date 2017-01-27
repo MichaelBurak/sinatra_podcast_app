@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if logged_in? then
+   if logged_in? then
       redirect '/podcasts'
+    else
     erb :'users/signup'
   end
 end
@@ -30,7 +31,7 @@ end
             session[:user_id] = @user.id
             redirect '/podcasts'
         else
-            redirect '/login'
+            redirect '/signup'
         end
   end
 

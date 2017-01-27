@@ -5,4 +5,8 @@ class PodcastsController < ApplicationController
     erb :'podcasts/index'
   end
 
+  get '/podcasts/new' do
+    erb :'podcasts/create_podcast'
+  end
+
 end
