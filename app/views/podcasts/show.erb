@@ -1,3 +1,16 @@
 <h2><%=@podcast.name%></h2>
 <br><h4><%= if @podcast.watched == true then "Watched [X]"
 end %></h4>
+
+<form method="post" action="/podcasts/<%=@podcast.id%>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="name" placeholder="name">
+  <label for="watched">Watched already?</label>
+  <input name="watched" type="checkbox" value="TRUE">
+  <input type="submit" value="Edit Podcast">
+</form>
+
+<form method="post" action="/podcasts/<%=@podcast.id%>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Podcast">
+</form>

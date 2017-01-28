@@ -8,24 +8,24 @@ class PodcastsController < ApplicationController
   end
 end
 
+  get '/podcasts/new' do
+    if logged_in?
+      erb :'podcasts/create_podcast'
+    else redirect '/signup'
+    end
+  end
+
+  post '/podcasts' do
+    @podcast = current_user.podcasts.create(name: params[:name], watched: params[:watched])
+    redirect '/podcasts'
+  end
+
   get '/podcasts/:id' do
     if logged_in?
       @podcast = Podcast.find_by_id(params[:id])
       erb :'podcasts/show'
     else redirect '/signup'
     end
-  end
-
-  get '/podcasts/new' do
-    if logged_in?
-    erb :'podcasts/create_podcast'
-  else redirect '/signup'
-  end
-end
-
-  post '/podcasts' do
-    @podcast = current_user.podcasts.create(name: params[:name], watched: params[:watched])
-    redirect '/podcasts'
   end
 
   get '/podcasts/:id/edit' do
@@ -43,5 +43,11 @@ end
       @podcast.save
       redirect to "/podcasts/#{@podcast.id}"
     end
+
+  delete '/podcasts/:id' do
+    @podcast = Podcast.find_by_id(params[:id])
+    @podcast.delete
+    redirect to '/podcasts'
+  end
 
 end
