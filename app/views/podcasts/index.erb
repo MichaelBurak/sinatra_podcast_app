@@ -1,7 +1,7 @@
 <h1>Podcasts:</h1>
 
 <%@podcasts.each do |podcast|%>
-<h2>Podcast no.<%=podcast.id%>:  <%=podcast.name%></h2>
+<h2>Podcast no.<%=podcast.id%>:  <a href="/podcasts/<%=podcast.id%>"><%=podcast.name%></h2></a>
   <h4><%= if podcast.watched == true then "Watched [X]"
   end %></h4><br>
 <%end %>
