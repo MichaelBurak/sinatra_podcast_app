@@ -1,7 +1,9 @@
 <h2><%=@podcast.name%></h2>
-<br><h4><%= if @podcast.watched == true then "Watched [X]"
+<h4><%= if @podcast.watched == true then "Watched [X]"
 end %></h4>
 
+
+Do you want to edit <%=@podcast.name%>?
 <form method="post" action="/podcasts/<%=@podcast.id%>">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="text" name="name" placeholder="name">

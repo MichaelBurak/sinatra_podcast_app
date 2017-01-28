@@ -1,3 +1,5 @@
+Do you want to edit?<%=@podcast.name%>
+
 <form method="post" action="/podcasts/<%=@podcast.id%>">
 <input id="hidden" type="hidden" name="_method" value="patch">
 <input type="text" name="name" placeholder="name">
