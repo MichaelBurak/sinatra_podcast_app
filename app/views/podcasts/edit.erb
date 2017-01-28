@@ -1,4 +1,4 @@
-Do you want to edit?<%=@podcast.name%>
+Do you want to edit<%=@podcast.name%>?
 
 <form method="post" action="/podcasts/<%=@podcast.id%>">
 <input id="hidden" type="hidden" name="_method" value="patch">
@@ -6,4 +6,10 @@ Do you want to edit?<%=@podcast.name%>
 <label for="watched">Watched already?</label>
 <input name="watched" type="checkbox" value="TRUE">
 <input type="submit" value ="Edit Podcast">
+</form>
+
+<br>Do you want to delete <%=@podcast.name%>?
+<form method="post" action="/podcasts/<%=@podcast.id%>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Podcast">
 </form>

@@ -3,16 +3,6 @@
 end %></h4>
 
 
-Do you want to edit <%=@podcast.name%>?
-<form method="post" action="/podcasts/<%=@podcast.id%>">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="text" name="name" placeholder="name">
-  <label for="watched">Watched already?</label>
-  <input name="watched" type="checkbox" value="TRUE">
-  <input type="submit" value="Edit Podcast">
-</form>
+<a href="/podcasts/<%=@podcast.id%>/edit"> Do you want to edit or delete <%=@podcast.name%>? </a> (You'll have to be the one who put it into the system.)
 
-<form method="post" action="/podcasts/<%=@podcast.id%>">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Podcast">
-</form>
+<br><a href="/podcasts">Return to the index of podcasts.</a>
