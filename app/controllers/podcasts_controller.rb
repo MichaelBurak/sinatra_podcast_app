@@ -17,7 +17,7 @@ end
 
   post '/podcasts' do
     if params[:name] == "" then
-      redirect '/podcasts'
+      redirect '/error'
     end
     @podcast = current_user.podcasts.create(name: params[:name], watched: params[:watched])
     redirect '/podcasts'
@@ -43,7 +43,7 @@ end
 
   patch '/podcasts/:id' do
     if params[:name] == "" then
-      redirect '/podcasts'
+      redirect '/error'
     end
       @podcast = Podcast.find_by_id(params[:id])
       if @podcast.user_id == current_user.id then
@@ -64,4 +64,7 @@ end
   end
 end
 
+  get '/error' do
+    erb :'podcasts/error'
+  end
 end

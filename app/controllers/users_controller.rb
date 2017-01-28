@@ -12,6 +12,9 @@ end
     @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
     if @user.save
       session[:user_id] = @user.id
+      flash[:signedup] = "You've been signed up!"
+      "#{flash[:signedup]}"
+      sleep 5
         redirect '/podcasts'
     else redirect '/signup'
       end
