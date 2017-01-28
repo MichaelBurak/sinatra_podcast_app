@@ -19,7 +19,7 @@ end
     if params[:name] == "" then
       redirect '/error'
     end
-    @podcast = current_user.podcasts.create(name: params[:name], watched: params[:watched])
+    @podcast = current_user.podcasts.create(name: params[:name], listened: params[:listened])
     redirect '/podcasts'
   end
 
@@ -48,7 +48,7 @@ end
       @podcast = Podcast.find_by_id(params[:id])
       if @podcast.user_id == current_user.id then
       @podcast.name = params[:name]
-      @podcast.watched = params[:watched]
+      @podcast.listened = params[:listened]
       @podcast.save
       redirect to "/podcasts/#{@podcast.id}"
     else redirect '/podcasts'

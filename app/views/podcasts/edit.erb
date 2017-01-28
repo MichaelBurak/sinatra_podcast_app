@@ -3,8 +3,8 @@ Do you want to edit <%=@podcast.name%>?
 <form method="post" action="/podcasts/<%=@podcast.id%>">
 <input id="hidden" type="hidden" name="_method" value="patch">
 <input type="text" name="name" placeholder="name">
-<label for="watched">Watched already?</label>
-<input name="watched" type="checkbox" value="TRUE">
+<label for="listened">Listened to already?</label>
+<input name="listened" type="checkbox" value="TRUE">
 <input type="submit" value ="Edit Podcast">
 </form>
 

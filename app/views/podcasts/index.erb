@@ -2,7 +2,7 @@
 
 <%@podcasts.each do |podcast|%>
 <h2><a href="/podcasts/<%=podcast.id%>"><%=podcast.name%></h2></a>
-  <h4><%= if podcast.watched == true then "Watched [X]"
+  <h4><%= if podcast.listened == true then "Listened [X]"
   end %></h4><br>
   Followed by <%=podcast.user.username%>
   <br>----------------------------------------------
