@@ -28,5 +28,20 @@ end
     redirect '/podcasts'
   end
 
+  get '/podcasts/:id/edit' do
+    if logged_in?
+      @podcast = Podcast.find_by_id(params[:id])
+      erb :'podcasts/edit'
+    else redirect '/signup'
+    end
+  end
+
+  patch '/podcasts/:id' do
+      @podcast = Podcast.find_by_id(params[:id])
+      @podcast.name = params[:name]
+      @podcast.watched = params[:watched]
+      @podcast.save
+      redirect to "/podcasts/#{@podcast.id}"
+    end
 
 end
