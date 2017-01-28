@@ -8,6 +8,14 @@ class PodcastsController < ApplicationController
   end
 end
 
+  get '/podcasts/:id' do
+    if logged_in?
+      @podcast = Podcast.find_by_id(params[:id])
+      erb :'podcasts/show'
+    else redirect '/signup'
+    end
+  end
+
   get '/podcasts/new' do
     if logged_in?
     erb :'podcasts/create_podcast'
