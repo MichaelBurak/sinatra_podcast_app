@@ -6,7 +6,7 @@ Specs:
 - [x] Include more than one model class (list of model class names e.g. User, Post, Category) - Podcast and User model classes are included.
 - [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts) - class User has_many Podcasts.
 - [x] Include user accounts - Users can signup, login, and logout, and can not access much of the site if logged out.
-- [x] Ensure that users can't modify content created by other users - Users can not delete or edit the podcast listings of other users, basd on user ids.
+- [x] Ensure that users can't modify content created by other users - Users can not delete or edit the podcast listings of other users, based on user ids.
 - [x] Include user input validations - Podcasts can not be created or edited with the input of blank names.
 - [x] Display validation failures to user with error message (example form URL e.g. /posts/new) - Attempting to create or edit a podcast to have a blank name will shunt the user to an /error route and provide them a link back to the index page.
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code - See below.
