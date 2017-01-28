@@ -4,6 +4,8 @@
 <h2>Podcast no.<%=podcast.id%>:  <a href="/podcasts/<%=podcast.id%>"><%=podcast.name%></h2></a>
   <h4><%= if podcast.watched == true then "Watched [X]"
   end %></h4><br>
+  Followed by <%=podcast.user.username%>
+  <br>----------------------------------------------
 <%end %>
 
 <br>
