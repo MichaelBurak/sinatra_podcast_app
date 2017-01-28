@@ -31,6 +31,8 @@ end
   get '/podcasts/:id/edit' do
     if logged_in?
       @podcast = Podcast.find_by_id(params[:id])
+    end
+    if @podcast.user_id == current_user.id
       erb :'podcasts/edit'
     else redirect '/signup'
     end
@@ -46,8 +48,11 @@ end
 
   delete '/podcasts/:id' do
     @podcast = Podcast.find_by_id(params[:id])
+    if @podcast.user_id == current_user.id
     @podcast.delete
     redirect to '/podcasts'
+  else redirect to '/login'
   end
+end
 
 end
