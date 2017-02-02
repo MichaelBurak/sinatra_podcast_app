@@ -1,21 +1,18 @@
 class PodcastsController < ApplicationController
 
   get '/podcasts' do
-    if logged_in?
+    authenticate_user
     @podcasts = Podcast.all
     erb :'podcasts/index'
-  else redirect '/signup'
   end
-end
 
   get '/podcasts/new' do
-    if logged_in?
-      erb :'podcasts/create_podcast'
-    else redirect '/signup'
-    end
+    authenticate_user
+    erb :'podcasts/create_podcast'
   end
 
   post '/podcasts' do
+    authenticate_user
     if params[:name] == "" then
       redirect '/error'
     end
@@ -24,24 +21,24 @@ end
   end
 
   get '/podcasts/:id' do
-    if logged_in?
-      @podcast = Podcast.find_by_id(params[:id])
-      erb :'podcasts/show'
-    else redirect '/signup'
-    end
+    authenticate_user
+    @podcast = Podcast.find_by_id(params[:id])
+    erb :'podcasts/show'
   end
 
   get '/podcasts/:id/edit' do
-    if logged_in?
-      @podcast = Podcast.find_by_id(params[:id])
-    end
+    authenticate_user
+    @podcast = Podcast.find_by_id(params[:id])
     if @podcast.user_id == current_user.id
       erb :'podcasts/edit'
-    else redirect '/signup'
+    else
+      redirect '/podcasts'
     end
   end
 
+
   patch '/podcasts/:id' do
+    authenticate_user
     if params[:name] == "" then
       redirect '/error'
     end
@@ -56,6 +53,7 @@ end
   end
 
   delete '/podcasts/:id' do
+    authenticate_user
     @podcast = Podcast.find_by_id(params[:id])
     if @podcast.user_id == current_user.id
     @podcast.delete

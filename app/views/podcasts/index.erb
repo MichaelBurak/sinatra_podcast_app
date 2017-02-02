@@ -1,12 +1,28 @@
 <h1>Podcasts Followed By Users:</h1>
 
 <%@podcasts.each do |podcast|%>
-<h2><a href="/podcasts/<%=podcast.id%>"><%=podcast.name%></h2></a>
-  <h4><%= if podcast.listened == true then "Listened [X]"
-  end %></h4><br>
+  <h2>
+    <a href="/podcasts/<%= podcast.id %>"><%= podcast.name %></a>
+  </h2>
+  <h4>
+    <%= podcast.listened ? "Listened [X]" : "" %>
+  </h4><br>
   Followed by <%=podcast.user.username%>
   <br>----------------------------------------------
-<%end %>
+
+  <% if podcast.user == current_user %>
+    <a href='<%= "/podcasts/#{podcast.id}/edit" %>'>
+      <button>Edit</button>
+    </a>
+
+    <form method="post" action="/podcasts/<%=podcast.id%>">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Podcast">
+    </form>
+
+  <% end %>
+
+<% end %>
 
 <br>
 Click on a podcast to show it alone, and to access edit/delete functions.<br>
