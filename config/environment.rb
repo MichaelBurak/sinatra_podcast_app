@@ -8,6 +8,10 @@ configure :development do
  set :show_exceptions, true
 end
 
+
+configure :production do
+ db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/mydb')
+
 ActiveRecord::Base.establish_connection(
    :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
    :host     => db.host,
@@ -16,5 +20,6 @@ ActiveRecord::Base.establish_connection(
    :database => db.path[1..-1],
    :encoding => 'utf8'
  )
+end
 
 require_all 'app'
