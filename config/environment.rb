@@ -16,6 +16,5 @@ ActiveRecord::Base.establish_connection(
    :database => db.path[1..-1],
    :encoding => 'utf8'
  )
- end
 
 require_all 'app'
